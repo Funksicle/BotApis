@@ -2,19 +2,19 @@ const express = require("express");
 const app = express();
 app.get("/jackietime", async function (req, res) {
     try {
-        const timeResponse = await webGet("https://timeapi.io/api/Time/current/zone?timeZone=Japan");
+        if (req.query["tz"] === undefined || req.query["field"] === undefined)
+            return console.error("No fields specified.");
+        const location = req.query["tz"];
+        const timeResponse = await webGet(`https://timeapi.io/api/Time/current/zone?timeZone=${location}`);
         const json = JSON.parse(timeResponse);
-        const queries = Object.keys(req.query);
-        if (queries.length > 0) {
-            const query = queries[0];
-            if (query === "dateTime") {
-                res.end(json[query].split("T").join(" ").split(".")[0]);
-                return;
-            }
-            if (json[queries[0]] !== undefined) {
-                res.end(json[queries[0]]);
-                return;
-            }
+        const field = req.query["field"];
+        if (field === "dateTime") {
+            res.end(json[field].split("T").join(" ").split(".")[0]);
+            return;
+        }
+        if (json[field] !== undefined) {
+            res.end(json[field]);
+            return;
         }
         const formattedDate = `${json.date} ${json.time}`
         res.end(formattedDate);
