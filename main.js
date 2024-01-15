@@ -1,5 +1,8 @@
-const express = require("express");
+import express from "express";
+import { config } from "./lib/config.js";
+
 const app = express();
+
 app.get("/jackietime", async function (req, res) {
     try {
         if (req.query["tz"] === undefined || req.query["field"] === undefined)
@@ -23,9 +26,8 @@ app.get("/jackietime", async function (req, res) {
     }
 });
 
-const server = app.listen(8081, function () {
-    // console.log(server.address());
-    // console.log("Listening on http://%s:%s", host, port);
+const server = app.listen(config.get("port"), function () {
+    console.log(`Listening on port ${config.get("port")}`);
 });
 
 async function webGet(url) {
