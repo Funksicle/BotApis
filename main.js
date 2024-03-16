@@ -4,10 +4,12 @@ import { jackieTime } from "./lib/time.js";
 import { jackieWeather } from "./lib/weather.js";
 import { jackieCurrency } from "./lib/currency.js";
 import { jackieDictionary } from "./lib/dictionary.js";
+import { jackieUrbanDictionary } from "./lib/urbandictionary.js";
 
 const app = express();
 
 jackieDictionary.register(app);
+jackieUrbanDictionary.register(app);
 jackieTime.register(app);
 jackieWeather.register(app);
 jackieCurrency.register(app);
