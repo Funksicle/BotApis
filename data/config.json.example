@@ -1,4 +1,5 @@
 {
     "port": 80,
-    "currencyapi_key": "replace with api key from freecurrencyapi.com"
+    "currencyapi_key": "replace with free api key from freecurrencyapi.com",
+    "weatherapi_key": "replace with free api key from openweathermap.org"
 }
