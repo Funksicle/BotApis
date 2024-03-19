@@ -1,22 +1,24 @@
 import express from "express";
-import { config } from "./lib/config.js";
-import { jackieTime, jackieVarTime } from "./lib/time.js";
-import { jackieWeather } from "./lib/weather.js";
-import { jackieOpenWeather } from "./lib/openweathermap.js";
-import { jackieCurrency, jackieVarCurrency } from "./lib/currency.js";
-import { jackieDictionary } from "./lib/dictionary.js";
-import { jackieUrbanDictionary } from "./lib/urbandictionary.js";
-import { jackieSetValue } from "./lib/set.js";
+import {
+    config,
+    jackieVarTime,
+    jackieTime,
+    jackieTz,
+    jackieVarCurrency,
+    jackieOpenWeather,
+    jackieDictionary,
+    jackieUrbanDictionary,
+    jackieSetValue
+} from "./lib/deps.js";
 
 const app = express();
 
 jackieDictionary.register(app);
 jackieUrbanDictionary.register(app);
-jackieTime.register(app);
 jackieVarTime.register(app);
-jackieWeather.register(app);
+jackieTime.register(app);
+jackieTz.register(app);
 jackieOpenWeather.register(app);
-jackieCurrency.register(app);
 jackieVarCurrency.register(app);
 jackieSetValue.register(app);
 
