@@ -1,27 +1,12 @@
 import express from "express";
-import {
-    config,
-    jackieVarTime,
-    jackieTime,
-    jackieTz,
-    jackieVarCurrency,
-    jackieOpenWeather,
-    jackieDictionary,
-    jackieUrbanDictionary,
-    jackieSetValue
-} from "./lib/deps.js";
+import { config, logger, commandCache } from "./lib/deps.js";
+import "./lib/time.js";
+import "./lib/set.js";
+import "./lib/dictionary.js";
+import "./lib/urbandictionary.js";
 
 const app = express();
 
-jackieDictionary.register(app);
-jackieUrbanDictionary.register(app);
-jackieVarTime.register(app);
-jackieTime.register(app);
-jackieTz.register(app);
-jackieOpenWeather.register(app);
-jackieVarCurrency.register(app);
-jackieSetValue.register(app);
+commandCache.forEach(cmd => cmd.register(app));
 
-app.listen(config.get("port"), function () {
-    console.log(`Listening on port ${config.get("port")}`);
-});
+app.listen(config.get("port"), () => logger.info(`Listening on ${config.get("host")}:${config.get("port")}`));
