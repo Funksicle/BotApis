@@ -4,6 +4,7 @@ import "./lib/time.js";
 import "./lib/set.js";
 import "./lib/dictionary.js";
 import "./lib/urbandictionary.js";
+import "./lib/google.js";
 
 const app = express();
 
