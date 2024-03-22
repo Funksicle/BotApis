@@ -7,7 +7,8 @@ import "./lib/urbandictionary.js";
 import "./lib/google.js";
 
 const app = express();
+const port = config.get("port") || 8980;
 
 commandCache.forEach(cmd => cmd.register(app));
 
-app.listen(config.get("port"), () => logger.info(`Listening on ${config.get("host")}:${config.get("port")}`));
+app.listen(port, () => logger.info(`Listening on ${config.get("host")}:${port}`));
