@@ -2,5 +2,6 @@
     "host": "http://yourserver.com - this needs to be accurate for the api to give you valid endpoints to put in botrix.",
     "port": 80,
     "currencyapi_key": "replace with free api key from freecurrencyapi.com",
-    "weatherapi_key": "replace with free api key from openweathermap.org"
+    "weatherapi_key": "replace with free api key from openweathermap.org",
+    "googleapi_key": "replace with your google api key"
 }
