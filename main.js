@@ -5,6 +5,7 @@ import "./lib/set.js";
 import "./lib/dictionary.js";
 import "./lib/urbandictionary.js";
 import "./lib/google.js";
+// import "./lib/aichat.js";
 
 const app = express();
 const port = config.get("port") || 8980;
